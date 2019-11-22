@@ -1,0 +1,33 @@
+\documentclass[11pt,a4paper]{article}
+
+
+%%% front matter
+
+  \title{Coursework 3: Graph Algorithms and Complexity Theory}
+  \author{Oskar Mampe}
+  \date{Tutorial Session: Thursday 1pm}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\textbf{Explanation: } A \textit{hamiltonian path} in an undirected graph is a path that contains all vertices of the graph (without repetition).  Similarly, a \textit{hamiltonian cycle} is a cycle that contains all verticesof the graph.  A graph with hamiltonian path is \textit{traceable}, and a graph with hamiltonian cycle is \textit{hamiltonian}.
+
+\begin{enumerate}
+    \item Specify decision problems \textbf{HP} and \textbf{HC} dealing with hamiltonian paths and hamiltonian cycles in undirected graphs.
+    \item Show \textbf{HP} $\leq^p_m$ \textbf{HC} by completing the following tasks: 
+        \begin{enumerate}
+            \item Construct a polynomial transformation $f$ from \textbf{HP} to \textbf{HC}.
+            \item Show for all graphs $G$ that $G \in Y_{HP} \Rightarrow f(G) \in Y_{HC}$. 
+            \item Show for all graphs $G$ that $f(G) \in Y_{HC} \Rightarrow G \in Y_{HP}$.
+        \end{enumerate}
+    \item Show \textbf{HC} $\leq^p_m$ \textbf{HP} by completing the following tasks: 
+    \begin{enumerate}
+        \item Construct a polynomial transformation $f$ from \textbf{HC} to \textbf{HP}.
+        \item Show for all graphs $G$ that $G \in Y_{HC} \Rightarrow g(G) \in Y_{HP}$.
+        \item Show for all graphs $G$ that $g(G) \in Y_{HP} \Rightarrow G \in Y_{HC}$.
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
