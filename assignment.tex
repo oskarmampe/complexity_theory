@@ -12,10 +12,16 @@
 \maketitle
 \thispagestyle{empty}
 
-\textbf{Explanation: } A \textit{hamiltonian path} in an undirected graph is a path that contains all vertices of the graph (without repetition).  Similarly, a \textit{hamiltonian cycle} is a cycle that contains all verticesof the graph.  A graph with hamiltonian path is \textit{traceable}, and a graph with hamiltonian cycle is \textit{hamiltonian}.
+\textbf{Explanation: } A \textit{hamiltonian path} in an undirected graph is a path that contains all vertices of the graph (without repetition).  Similarly, a \textit{hamiltonian cycle} is a cycle that contains all vertices of the graph.  A graph with hamiltonian path is \textit{traceable}, and a graph with hamiltonian cycle is \textit{hamiltonian}.
 
 \begin{enumerate}
     \item Specify decision problems \textbf{HP} and \textbf{HC} dealing with hamiltonian paths and hamiltonian cycles in undirected graphs.
+    
+    \textbf{HP}:\\ Input: An undirected graph $G = (V, E)$.\\ Question: Does $G$ contain a Hamiltonian Path?\\
+
+
+    \textbf{HC}:\\ Input: An undirected graph $G = (V, E)$.\\ Question: Does $G$ contain a Hamiltonian Circuit?\\
+
     \item Show \textbf{HP} $\leq^p_m$ \textbf{HC} by completing the following tasks: 
         \begin{enumerate}
             \item Construct a polynomial transformation $f$ from \textbf{HP} to \textbf{HC}.
