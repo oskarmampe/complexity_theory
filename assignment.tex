@@ -1,5 +1,8 @@
 \documentclass[11pt,a4paper]{article}
 
+\newcommand{\hc} {HC}
+
+\newcommand{\hp} {HP}
 
 %%% front matter
 
@@ -15,27 +18,46 @@
 \textbf{Explanation: } A \textit{hamiltonian path} in an undirected graph is a path that contains all vertices of the graph (without repetition).  Similarly, a \textit{hamiltonian cycle} is a cycle that contains all vertices of the graph.  A graph with hamiltonian path is \textit{traceable}, and a graph with hamiltonian cycle is \textit{hamiltonian}.
 
 \begin{enumerate}
-    \item Specify decision problems \textbf{HP} and \textbf{HC} dealing with hamiltonian paths and hamiltonian cycles in undirected graphs.
+    \item Specify decision problems \hp{} and \hc{}  dealing with hamiltonian paths and hamiltonian cycles in undirected graphs.
     
-    \textbf{HP}:\\ Input: An undirected graph $G = (V, E)$.\\ Question: Does $G$ contain a Hamiltonian Path?\\
+    \hp{}:\\ Input: An undirected graph $G = (V, E)$.\\ Question: Does $G$ contain a Hamiltonian Path?\\
 
 
-    \textbf{HC}:\\ Input: An undirected graph $G = (V, E)$.\\ Question: Does $G$ contain a Hamiltonian Circuit?\\
+    \hc{}:\\ Input: An undirected graph $G = (V, E)$.\\ Question: Does $G$ contain a Hamiltonian Circuit?\\
 
-    \item Show \textbf{HP} $\leq^p_m$ \textbf{HC} by completing the following tasks: 
+    \item Show \hp{} $\leq^p_m$ \hc{} by completing the following tasks: 
         \begin{enumerate}
-            \item Construct a polynomial transformation $f$ from \textbf{HP} to \textbf{HC}.
-            Let $G = (V, E)$ be an input for a Hamiltonian Path. Let $f(G) = G'  = (V', E)$, where $V' = V \cup \{v\} v \notin V$ and $E' = E \cup \{ \{ v, w\} | w \in v\}$. This is in polynomial time as adding a vertex takes constant time and adding edges $\{v, w \}$ for all $w \in V$ takes $|V|$ amount of time. In total this operation takes $|V| + c$ amount of time, which is polynomial. 
-            \item Show for all graphs $G$ that $G \in Y_{HP} \Rightarrow f(G) \in Y_{HC}$. 
+            \item Construct a polynomial transformation $f$ from \hp{} to \hc{}.\\
+            Let $G = (V, E')$ be an input for a Hamiltonian Path. Let $f(G) = G'  = (V', E)$,
+             where $V' = V \cup \{v\} v \notin V$ and $E' = E \cup \{ \{ v, w\} | w \in v\}$.
+             This is in polynomial time as adding a vertex takes constant time and adding edges $\{v, w \}$
+              for all $w \in V$ takes $|V|$ amount of time. In total this operation takes $|V| + c$ amount of time, which is polynomial. 
+            \item Show for all graphs $G$ that $G \in Y_{\hp{}} \Rightarrow f(G) \in Y_{\hc{}}$.\\
+            \textbf{Proof: }  Let $G \in \hp{}$.
+             Given a path $p = (v_1, \ldots, v_n)$ connect the vertex $v_n$ to $v_1$ through $v'$,
+              making a path $p' = (v_1, \ldots, v_n, v', v_1)$, which is a cycle.
+               The vertices $v_n$ and $v_1$ will always be able to traverse to $v'$
+                as $v'$ is connected to all vertices. $f(G)$ is a \hc{} as it starts and ends at the vertex $v_1$.
+            \item Show for all graphs $G$ that $f(G) \in Y_{\hc{}} \Rightarrow G \in Y_{\hp{}}$.\\
+            Let $f(G) \in \hc{}$. Given a path $p' = (v_1, \ldots, v_{n-1}, v_n, v_1)$ removing $v_n, v_1$ gives $p'' = (v_1, \ldots, v_{n-1})$.
+            The result has to be a path as $v_n$ will always be the bridge between the last node of a hamiltonian path and the first.
             
-            \item Show for all graphs $G$ that $f(G) \in Y_{HC} \Rightarrow G \in Y_{HP}$.
             
         \end{enumerate}
-    \item Show \textbf{HC} $\leq^p_m$ \textbf{HP} by completing the following tasks: 
+    \item Show \hc{} $\leq^p_m$ \hp{} by completing the following tasks: 
     \begin{enumerate}
-        \item Construct a polynomial transformation $f$ from \textbf{HC} to \textbf{HP}.
-        \item Show for all graphs $G$ that $G \in Y_{HC} \Rightarrow g(G) \in Y_{HP}$.
-        \item Show for all graphs $G$ that $g(G) \in Y_{HP} \Rightarrow G \in Y_{HC}$.
+        \item Construct a polynomial transformation $f$ from \hc{} to \hp{}.\\
+        Let $G = (V, E)$ be an input for a Hamiltonian Cycle. Let $f(G) = G'  = (V', E')'$,
+             where $v \in V$ is a vertex in $G$, $V' = V \cup \{v', s, t\}$  where $v', s, t \notin V$ and $E' = E \cup \{ \{v',w\} | \{v, w\} \in E \} \cup \{ \{ t, v' \}, \{s, v\}, \{v, v'\} \}$.
+             This is in polynomial time as adding 3 vertices takes constant time and adding edges $\{ \{v',w\} | \{v, w\} \in E \} \cup \{ \{ t, v' \}, \{s, v\}, \{v, v'\} \}$
+            $|V| + c$ amount of time, which is polynomial. 
+        \item Show for all graphs $G$ that $G \in Y_{\hc{}} \Rightarrow g(G) \in Y_{\hp{}}$.\\
+        Given a cycle $c = (v_1, \ldots, v_n, v_1)$, it is known that there is a path where $(v_1, u, \dots, y, v_1)$ which traverses all the vertices and end up at the same vertex $v_1$.
+         However, if you create a copy $v'$ of $v$ and then connect $s$ to $v$ and $t$ to $v'$, as $s, t$ being the endpoints this must translate to a hamiltonian path.
+         making cycle $c' = (s,v,u,\ldots , y', v', t)$, which is a hamiltonian path.
+               
+        \item Show for all graphs $G$ that $g(G) \in Y_{\hp{}} \Rightarrow G \in Y_{\hc{}}$.\\
+        Given a path in $f(G)$, it is guaranteed that $s, t$ are the endpoints. Therefore, ignoring the first and last edge of the path will give you the path $c' = (v,u,\ldots , y', v)$ which has to be a cycle.
     \end{enumerate}
 \end{enumerate}
 
