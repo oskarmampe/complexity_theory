@@ -25,8 +25,11 @@
     \item Show \textbf{HP} $\leq^p_m$ \textbf{HC} by completing the following tasks: 
         \begin{enumerate}
             \item Construct a polynomial transformation $f$ from \textbf{HP} to \textbf{HC}.
+            Let $G = (V, E)$ be an input for a Hamiltonian Path. Let $f(G) = G'  = (V', E)$, where $V' = V \cup \{v\} v \notin V$ and $E' = E \cup \{ \{ v, w\} | w \in v\}$. This is in polynomial time as adding a vertex takes constant time and adding edges $\{v, w \}$ for all $w \in V$ takes $|V|$ amount of time. In total this operation takes $|V| + c$ amount of time, which is polynomial. 
             \item Show for all graphs $G$ that $G \in Y_{HP} \Rightarrow f(G) \in Y_{HC}$. 
+            
             \item Show for all graphs $G$ that $f(G) \in Y_{HC} \Rightarrow G \in Y_{HP}$.
+            
         \end{enumerate}
     \item Show \textbf{HC} $\leq^p_m$ \textbf{HP} by completing the following tasks: 
     \begin{enumerate}
@@ -37,3 +40,4 @@
 \end{enumerate}
 
 \end{document}
+    
